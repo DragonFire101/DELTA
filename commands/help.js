@@ -27,12 +27,12 @@ module.exports = {
 			return message.reply("That's not a valid command!");
 		}
 
-		return sendChannelSpecificCommandDetails(message, prefix, command);
+		return sendChannelSpecificCommandDetails(message, prefix, command, server);
 	}
 };
 
 function dmUserAllCommands(message, prefix, commands) {
-	let embedTheme = require(`../information/embedThemes/${server.embedTheme}.json`).catch(() => {
+	let embedTheme = require(`../information/embedThemes/default.json`).catch(() => {
 		return message.channel.send("Invlid embed theme! Look at the DELTA website to see the list of avaliable embed themes.");
 	})
 
@@ -63,12 +63,10 @@ function dmUserAllCommands(message, prefix, commands) {
 		});
 }
 
-function sendChannelSpecificCommandDetails(message, prefix, command) {
-	let embed = new Discord.MessageEmbed()
+function sendChannelSpecificCommandDetails(message, prefix, command, server) {
+	let embedTheme = require(`../information/embedThemes/${server.embedTheme}.json`)
+	let embed = new Discord.MessageEmbed(embedTheme)
 		.setTitle(`Name: ${command.name}`)
-		.setColor(15105570)
-		.setThumbnail('https://i.ibb.co/2MHY6wn/D-E-L-T-A-4.jpg')
-		.setFooter('Resistance Logistics', 'https://i.ibb.co/Wzd001F/677a08d8682923ca8cb51fe48df38208.png');
 
 	if (command.aliases) {
 		embed.addField('Aliases:', command.aliases.join(', '), false);

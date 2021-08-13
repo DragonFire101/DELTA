@@ -15,16 +15,10 @@ async function getMemberInfo(member, sheet, server) {
 
 	var headers = await getSheetHeaders(sheet);
 
-	const embed = new Discord.MessageEmbed({
-		thumbnail: { url: 'https://i.ibb.co/2MHY6wn/D-E-L-T-A-4.jpg' },
-		color: 15105570,
-		title: memberData[server.nameHeader],
-		footer: {
-			text: 'Resistance Logistics',
-			icon_url: 'https://i.ibb.co/Wzd001F/677a08d8682923ca8cb51fe48df38208.png'
-		}
-	});
-
+	let embedTheme = await require(`../information/embedThemes/${server.embedTheme}.json`)
+	const embed = new Discord.MessageEmbed(embedTheme)
+		.setTitle(memberData[server.nameHeader])
+	
 	let description = '';
 
 	headers.forEach((header) => {

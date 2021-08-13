@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 
-function splitEmbedsByFields(fieldsContent, fieldCount, title) {
+function splitEmbedsByFields(fieldsContent, fieldCount, title, server) {
 	var embeds = [];
 	var isFirstEmbed = true;
 	while (fieldsContent.length > 0) {
@@ -14,20 +14,21 @@ function splitEmbedsByFields(fieldsContent, fieldCount, title) {
 			fields.push(fieldsContent.shift());
 		}
 
-		var embed = new Discord.MessageEmbed({
-			color: 15105570,
-			fields: fields
-		});
+		let embedTheme = require(`../information/embedThemes/${server.embedTheme}.json`)
+		var embed = new Discord.MessageEmbed(embedTheme)
+			.addFields(fields)
+			.setThumbnail('')
+			.setFooter('')
 
 		if (isFirstEmbed) {
 			embed.setTitle(title);
-			embed.setThumbnail('https://i.ibb.co/2MHY6wn/D-E-L-T-A-4.jpg');
+			embed.setThumbnail(embedTheme.thumbnail.url);
 
 			isFirstEmbed = false;
 		}
 
 		if (fieldsContent.length == 0) {
-			embed.setFooter('Resistance Logistics', 'https://i.ibb.co/Wzd001F/677a08d8682923ca8cb51fe48df38208.png');
+			embed.setFooter(embedTheme.footer.text, embedTheme.footer.iconURL);
 		}
 
 		embeds.push(embed);

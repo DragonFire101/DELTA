@@ -16,12 +16,12 @@ module.exports = {
 			return message.channel.send('Only Vio can run this!');
 		}
 
-		const embed = new Discord.MessageEmbed()
+		let embedTheme = await require(`../information/embedThemes/${server.embedTheme}.json`)
+		const embed = new Discord.MessageEmbed(embedTheme)
 			.setTitle('Change Log')
-			.setColor(15105570)
 			.setAuthor('Vio', 'https://i.ibb.co/SyjyCdh/56dd1219215d46403de009a1c2b82bcd.png')
 			.setDescription(args.join(' '))
-			.setFooter('Resistance Logistics', 'https://i.ibb.co/Wzd001F/677a08d8682923ca8cb51fe48df38208.png');
+			.setThumbnail('')
 
 		servers.guilds.forEach(async (server) => {
 			if (server['announcementChannelId']) {

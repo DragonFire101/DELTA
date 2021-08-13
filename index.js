@@ -205,16 +205,16 @@ client.on('guildMemberRemove', async (member) => {
 
 	let announcementChannel = await client.channels.fetch(server.announcementChannelId);
 
-	let embed = new Discord.MessageEmbed()
-		.setTitle('Leave Notification')
-		.setColor(15105570)
-		.setAuthor(member.user.tag)
-		.setDescription(
-			`User \`${member.displayName} / ${rosterMember[
-				server.nameHeader
-			]}\` has left the discord and is still on the roster!`
-		)
-		.setFooter('Resistance Logistics', 'https://i.ibb.co/Wzd001F/677a08d8682923ca8cb51fe48df38208.png');
+	let embedTheme = await require(`../information/embedThemes/${server.embedTheme}.json`)
+	let embed = new Discord.MessageEmbed(embedTheme || require('../information/embedThemes/default.json'))
+	.setTitle('Leave Notification')
+	.setAuthor(member.user.tag)
+	.setDescription(
+		`User \`${member.displayName} / ${rosterMember[
+			server.nameHeader
+		]}\` has left the discord and is still on the roster!`
+	)
+	.setThumbnail('')
 
 	announcementChannel.send(embed);
 });

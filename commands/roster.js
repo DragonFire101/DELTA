@@ -25,11 +25,9 @@ module.exports = {
 		}
 
 		var membersInfo = await getMembersInfo(rosterSheet, server);
-		var embeds = await splitEmbedsByFields(membersInfo, 24, spreadsheet.title);
+		var embeds = await splitEmbedsByFields(membersInfo, 24, spreadsheet.title, server);
 		var ranks = await getRankCountFromSheet(server, rosterSheet);
 
-		console.log("Server: ", server);
-		console.log("Embed theme: ", server.embedTheme);
 		let embedTheme
 		try{
 			embedTheme = await require(`../information/embedThemes/${await server.embedTheme}.json`)

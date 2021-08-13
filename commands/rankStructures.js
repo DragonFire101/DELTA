@@ -10,10 +10,10 @@ module.exports = {
 	guildOnly: false,
 	commandChannel: true,
 	async execute(message) {
-		const embed = new Discord.MessageEmbed()
-			.setColor(15105570)
+		let embedTheme = await require(`../information/embedThemes/default.json`)
+		const embed = new Discord.MessageEmbed(embedTheme)
 			.setTitle(`Avaliable rank structures:`)
-			.setFooter('Resistance Logistics', 'https://i.ibb.co/Wzd001F/677a08d8682923ca8cb51fe48df38208.png');
+			.setThumbnail('')
 
 		let dirPath = path.resolve('./information/ranks');
 		const rankStructures = fs.readdirSync(dirPath).filter((file) => file.endsWith('.json'));
