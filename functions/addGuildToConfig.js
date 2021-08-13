@@ -19,7 +19,8 @@ function addGuildToConfig(guild) {
 		rankStructure: 'standard',
 		memberLogPrefix: 'Resistance',
 		staticMessages: [],
-		googleClientCredentials: {}
+		googleClientCredentials: {},
+		embedTheme: "default"
 	});
 
 	let filePath = path.resolve('./information/guilds.json');

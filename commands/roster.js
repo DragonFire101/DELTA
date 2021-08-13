@@ -27,7 +27,19 @@ module.exports = {
 		var membersInfo = await getMembersInfo(rosterSheet, server);
 		var embeds = await splitEmbedsByFields(membersInfo, 24, spreadsheet.title);
 		var ranks = await getRankCountFromSheet(server, rosterSheet);
-		let iconUrl = require(`../information/embedThemes/resistanceLogistics.json`).footer.iconURL;
+
+		console.log("Server: ", server);
+		console.log("Embed theme: ", server.embedTheme);
+		let embedTheme
+		try{
+			embedTheme = await require(`../information/embedThemes/${await server.embedTheme}.json`)
+		} 
+		catch {
+			return message.channel.send("Invlid embed theme! Look at the DELTA website to see the list of avaliable embed themes.");
+		}
+
+		let iconUrl = embedTheme.footer.iconURL;
+
 		embeds[embeds.length - 1].setFooter(
 			`CO: ${ranks['CO']} | NCO: ${ranks['NCO']} | Enlisted: ${ranks['Enlisted']} | TR: ${ranks['TR']} | Honorary: ${ranks['Honorary']}`,
 			iconUrl

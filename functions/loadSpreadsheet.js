@@ -1,14 +1,14 @@
 const { GoogleSpreadsheet } = require('delta-google-spreadsheet');
 const { sendErrorEmbed } = require('../functions/sendErrorEmbed.js');
 
-async function loadSpreadsheet(spreadsheetId, guild) {
-	const spreadsheet = new GoogleSpreadsheet(spreadsheetId);
-
+async function loadSpreadsheet(spreadsheetId, server) {
+	var spreadsheet;
 	try {
-		await spreadsheet.useServiceAccountAuth(guild['googleClientCredentials']);
+		spreadsheet = new GoogleSpreadsheet(spreadsheetId);
+		await spreadsheet.useServiceAccountAuth(server['googleClientCredentials']);
 	} catch (err) {
 		sendErrorEmbed({ message: `**Error:** ${err}` });
-		return null;
+		throw err;
 	}
 
 	await spreadsheet.loadInfo();

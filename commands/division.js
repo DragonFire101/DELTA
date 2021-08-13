@@ -28,7 +28,11 @@ module.exports = {
 			divisionGuild = server;
 		}
 
-		const embed = new Discord.MessageEmbed(require('../information/embedThemes/resistanceLogistics.json')).setTitle(
+		let embedTheme = await require(`../information/embedThemes/${server.embedTheme}.json`).catch(() => {
+			return message.channel.send("Invlid embed theme! Look at the DELTA website to see the list of avaliable embed themes.");
+		})
+
+		const embed = new Discord.MessageEmbed(embedTheme).setTitle(
 			`${divisionGuild.guildName}`
 		);
 

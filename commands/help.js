@@ -32,7 +32,11 @@ module.exports = {
 };
 
 function dmUserAllCommands(message, prefix, commands) {
-	let embed = new Discord.MessageEmbed(require('../information/embedThemes/resistanceLogistics.json'))
+	let embedTheme = require(`../information/embedThemes/${server.embedTheme}.json`).catch(() => {
+		return message.channel.send("Invlid embed theme! Look at the DELTA website to see the list of avaliable embed themes.");
+	})
+
+	let embed = new Discord.MessageEmbed(embedTheme)
 		.setTitle("Here's a list of all my commands:")
 		.setFooter(
 			`You can send \`${prefix}help [command name]\` to get more info on a specific command!`,

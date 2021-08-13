@@ -10,13 +10,21 @@ module.exports = {
 	guildOnly: false,
 	commandChannel: true,
 	hide: true,
-	async execute(message) {
+	async execute(message, args, server) {
 		if (message.author.id != '203944534839656448') {
 			return message.channel.send(`Unknown command!`);
 		}
 
-		const embed = new Discord.MessageEmbed(require('../information/embedThemes/resistanceLogistics.json')).setTitle(
-			'Resistance Divisions'
+		let embedTheme;
+		try{
+			embedTheme = await require(`../information/embedThemes/${await server.embedTheme}.json`)
+		} 
+		catch {
+			return message.channel.send("Invlid embed theme! Look at the DELTA website to see the list of avaliable embed themes.");
+		}
+
+		const embed = new Discord.MessageEmbed(embedTheme).setTitle(
+			'Divisions'
 		);
 
 		const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
@@ -26,19 +34,18 @@ module.exports = {
 			await delay(3000);
 			message.channel.send(`Getting ${guild.guildName} members!`);
 
-			const spreadsheet = await loadSpreadsheet(guild.spreadsheetId, guild).catch((err) => {
-				console.log(err);
-				message.channel.send(`Unable to load spreadsheet: \`${guild.guildName}\``);
+			var spreadsheet = await loadSpreadsheet(guild.spreadsheetId, guild).catch(err => {
+				message.channel.send(`Unable to load spreadsheet: \`${guild.guildName}\`\nError ${err.response.status}: ${err.response.statusText}`);
 			});
-			if (spreadsheet === null) {
-				return message.channel.send('Invalid spreadsheet id! Make sure you set it up properly in the config.');
+			if (spreadsheet === null || spreadsheet === undefined) {
+				message.channel.send(`Skipping \`${guild.guildName}\` spreadsheet. . .`);
+				continue;
 			}
 
 			var rosterSheet = spreadsheet.sheetsByTitle[guild.rosterName];
 			if (!rosterSheet) {
-				return message.channel.send(
-					'Invalid roster sheet name! Make sure you set it up properly in the config.'
-				);
+				message.channel.send(`Unable to load roster: \`${guild.guildName}\``);
+				continue;
 			}
 
 			var rows = await rosterSheet.getRows();
