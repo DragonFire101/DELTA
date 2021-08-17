@@ -1,6 +1,7 @@
 const { getMemberFromSheetById } = require('./getMemberFromSheetById.js');
 const { getMemberFromSheetByName } = require('./getMemberFromSheetByName.js');
 const { getSheetHeaders } = require('./getSheetHeaders.js');
+const { isValidEmbedTheme } = require('../functions/isValidEmbedTheme.js');
 const Discord = require('discord.js');
 
 async function getMemberInfo(member, sheet, server) {
@@ -15,7 +16,7 @@ async function getMemberInfo(member, sheet, server) {
 
 	var headers = await getSheetHeaders(sheet);
 
-	let embedTheme = await require(`../information/embedThemes/${server.embedTheme}.json`)
+	let embedTheme = await isValidEmbedTheme(server.embedTheme) ? require(`../information/embedThemes/${server.embedTheme}.json`) : require(`../information/embedThemes/default.json`);
 	const embed = new Discord.MessageEmbed(embedTheme)
 		.setTitle(memberData[server.nameHeader])
 	

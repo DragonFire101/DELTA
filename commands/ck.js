@@ -76,7 +76,7 @@ module.exports = {
 			}
 		}
 
-		let isConfirmed = await getReactionConfirmation(`Are your sure you want to do this? ${outputLog}`, message);
+		let isConfirmed = await getReactionConfirmation(`Are you sure you want to do this? ${outputLog}`, message);
 
 		if (await isConfirmed) {
 			for (let member of members) {

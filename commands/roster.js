@@ -2,6 +2,7 @@ const { getMembersInfo } = require('../functions/getMembersInfo.js');
 const { loadSpreadsheet } = require('../functions/loadSpreadsheet.js');
 const { getRankCountFromSheet } = require('../functions/getRankCountFromSheet.js');
 const { splitEmbedsByFields } = require('../functions/splitEmbedsByFields.js');
+const { isValidEmbedTheme } = require('../functions/isValidEmbedTheme.js');
 
 module.exports = {
 	name: 'roster',
@@ -28,14 +29,7 @@ module.exports = {
 		var embeds = await splitEmbedsByFields(membersInfo, 24, spreadsheet.title, server);
 		var ranks = await getRankCountFromSheet(server, rosterSheet);
 
-		let embedTheme
-		try{
-			embedTheme = await require(`../information/embedThemes/${await server.embedTheme}.json`)
-		} 
-		catch {
-			return message.channel.send("Invlid embed theme! Look at the DELTA website to see the list of avaliable embed themes.");
-		}
-
+		let embedTheme = await isValidEmbedTheme(server.embedTheme) ? require(`../information/embedThemes/${server.embedTheme}.json`) : require(`../information/embedThemes/default.json`);
 		let iconUrl = embedTheme.footer.iconURL;
 
 		embeds[embeds.length - 1].setFooter(

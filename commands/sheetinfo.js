@@ -36,7 +36,7 @@ module.exports = {
 		}
 
 		try {
-			message.channel.send(splitEmbedsByFields(await getSheetInfo(sheet), 24, sheet.title, server));
+			message.channel.send(await splitEmbedsByFields(await getSheetInfo(sheet), 24, sheet.title, server));
 		} catch (err) {
 			console.log(err);
 			await sendErrorEmbed(message, { message: `**Command:** ${message.content}\n**Error:** ${err}` });

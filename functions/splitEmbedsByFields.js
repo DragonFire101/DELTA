@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
+const { isValidEmbedTheme } = require('../functions/isValidEmbedTheme.js');
 
-function splitEmbedsByFields(fieldsContent, fieldCount, title, server) {
+async function splitEmbedsByFields(fieldsContent, fieldCount, title, server) {
 	var embeds = [];
 	var isFirstEmbed = true;
 	while (fieldsContent.length > 0) {
@@ -14,7 +15,7 @@ function splitEmbedsByFields(fieldsContent, fieldCount, title, server) {
 			fields.push(fieldsContent.shift());
 		}
 
-		let embedTheme = require(`../information/embedThemes/${server.embedTheme}.json`)
+		let embedTheme = await isValidEmbedTheme(server.embedTheme) ? require(`../information/embedThemes/${server.embedTheme}.json`) : require(`../information/embedThemes/default.json`);
 		var embed = new Discord.MessageEmbed(embedTheme)
 			.addFields(fields)
 			.setThumbnail('')

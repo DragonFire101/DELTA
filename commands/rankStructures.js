@@ -10,7 +10,7 @@ module.exports = {
 	guildOnly: false,
 	commandChannel: true,
 	async execute(message) {
-		let embedTheme = await require(`../information/embedThemes/default.json`)
+		let embedTheme = require(`../information/embedThemes/default.json`)
 		const embed = new Discord.MessageEmbed(embedTheme)
 			.setTitle(`Avaliable rank structures:`)
 			.setThumbnail('')

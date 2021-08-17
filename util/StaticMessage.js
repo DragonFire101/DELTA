@@ -194,7 +194,7 @@ async function saveServerObjectToFile(server) {
 
 async function createDataEmbeds(rosterSheet, sheetColumn, server, spreadsheet) {
     let fields = await getColumnInfo(rosterSheet, sheetColumn, server);
-    let embeds = splitEmbedsByFields(fields, 24, spreadsheet.title, server)
+    let embeds = await splitEmbedsByFields(fields, 24, spreadsheet.title, server)
     return embeds;
 }
 

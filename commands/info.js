@@ -9,7 +9,7 @@ module.exports = {
 	guildOnly: false,
 	commandChannel: true,
 	async execute(message, args) {
-		let embedTheme = await require(`../information/embedThemes/default.json`)
+		let embedTheme = require(`../information/embedThemes/default.json`)
 		const embed = new Discord.MessageEmbed(embedTheme)
 			.setTitle(`${description} v${version}:`)
 			.setDescription(

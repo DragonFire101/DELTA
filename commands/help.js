@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 const Discord = require('discord.js');
+const { isValidEmbedTheme } = require('../functions/isValidEmbedTheme.js');
 
 module.exports = {
 	name: 'help',
@@ -32,10 +33,7 @@ module.exports = {
 };
 
 function dmUserAllCommands(message, prefix, commands) {
-	let embedTheme = require(`../information/embedThemes/default.json`).catch(() => {
-		return message.channel.send("Invlid embed theme! Look at the DELTA website to see the list of avaliable embed themes.");
-	})
-
+	let embedTheme = server.embedTheme ? require(`../information/embedThemes/${server.embedTheme}.json`) : require(`../information/embedThemes/default.json`);
 	let embed = new Discord.MessageEmbed(embedTheme)
 		.setTitle("Here's a list of all my commands:")
 		.setFooter(
@@ -63,8 +61,8 @@ function dmUserAllCommands(message, prefix, commands) {
 		});
 }
 
-function sendChannelSpecificCommandDetails(message, prefix, command, server) {
-	let embedTheme = require(`../information/embedThemes/${server.embedTheme}.json`)
+async function sendChannelSpecificCommandDetails(message, prefix, command, server) {
+	let embedTheme = await isValidEmbedTheme(server.embedTheme) ? require(`../information/embedThemes/${server.embedTheme}.json`) : require(`../information/embedThemes/default.json`);
 	let embed = new Discord.MessageEmbed(embedTheme)
 		.setTitle(`Name: ${command.name}`)
 

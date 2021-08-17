@@ -136,7 +136,7 @@ async function sendStaticMessageListToCommandChannel(originalCommandMessageObjec
 			inline: false
 		});
 	}
-	let embeds = splitEmbedsByFields(fields, 24, "Static Messages", { "embedTheme": "default" });
+	let embeds = await splitEmbedsByFields(fields, 24, "Static Messages", { "embedTheme": "default" });
 	embeds.forEach((embed) => {
 		originalCommandMessageObject.channel.send(embed);
 	});

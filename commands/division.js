@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const { guilds } = require('../information/guilds.json');
 const { loadSpreadsheet } = require('../functions/loadSpreadsheet.js');
+const { isValidEmbedTheme } = require('../functions/isValidEmbedTheme.js');
 
 module.exports = {
 	name: 'division',
@@ -28,10 +29,7 @@ module.exports = {
 			divisionGuild = server;
 		}
 
-		let embedTheme = await require(`../information/embedThemes/${server.embedTheme}.json`).catch(() => {
-			return message.channel.send("Invlid embed theme! Look at the DELTA website to see the list of avaliable embed themes.");
-		})
-
+		let embedTheme = await isValidEmbedTheme(server.embedTheme) ? require(`../information/embedThemes/${server.embedTheme}.json`) : require(`../information/embedThemes/default.json`);
 		const embed = new Discord.MessageEmbed(embedTheme).setTitle(
 			`${divisionGuild.guildName}`
 		);

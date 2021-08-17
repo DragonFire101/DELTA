@@ -4,7 +4,7 @@ const Discord = require('discord.js');
 async function sendErrorEmbed(message, error) {
 	console.log(error);
 
-	let embedTheme = await require(`../information/embedThemes/default.json`)
+	let embedTheme = require(`../information/embedThemes/default.json`)
 	const embed = new Discord.MessageEmbed(embedTheme)
 		.setAuthor(message.author.tag)
 		.setThumbnail(message.author.displayAvatarURL())

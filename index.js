@@ -205,8 +205,8 @@ client.on('guildMemberRemove', async (member) => {
 
 	let announcementChannel = await client.channels.fetch(server.announcementChannelId);
 
-	let embedTheme = await require(`../information/embedThemes/${server.embedTheme}.json`)
-	let embed = new Discord.MessageEmbed(embedTheme || require('../information/embedThemes/default.json'))
+	let embedTheme = server.embedTheme ? require(`../information/embedThemes/${server.embedTheme}.json`) : require(`../information/embedThemes/default.json`);
+	let embed = new Discord.MessageEmbed(embedTheme)
 	.setTitle('Leave Notification')
 	.setAuthor(member.user.tag)
 	.setDescription(
