@@ -1,0 +1,31 @@
+GET http://localhost:3000/api/
+
+###
+
+GET http://localhost:3000/api/characters
+
+###
+
+POST http://localhost:3000/api/characters
+Content-Type: application/json
+
+{
+    "name": "Vio",
+    "division": "Logistics"
+} 
+
+###
+GET http://localhost:3000/api/characters/61b23f2124a0bae7594c9306
+
+###
+
+DELETE http://localhost:3000/api/characters/61b23e7ecbd74523d7d1f5f6
+
+###
+
+PATCH http://localhost:3000/api/characters/61b23f2124a0bae7594c9306
+Content-Type: application/json
+
+{
+    "currency": 5
+}
