@@ -2,10 +2,13 @@ async function getRankCountFromSheet(divisionGuild, rosterSheet) {
     var rows = await rosterSheet.getRows();
 
     var ranks = {
+        Advisor: 0,
         Honorary: 0,
         TR: 0,
         Enlisted: 0,
+        JNCO: 0,
         NCO: 0,
+        SNCO: 0,
         CO: 0,
         Other: 0
     };
