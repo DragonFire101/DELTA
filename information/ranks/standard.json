@@ -1,88 +1,98 @@
 {
     "ranks": [
     {
-        "name": "00-Honorary",
+        "name": "Advisor",
         "index": 0,
+        "group": "Advisor"
+    },
+    {
+        "name": "Honorary",
+        "index": 1,
         "group": "Honorary"
     },
 	{
-        "name": "-01-TR",
-        "index": 1,
-        "group": "TR"
-    },
-	{
-        "name": "01-PVT",
+        "name": "09",
         "index": 2,
         "group": "Enlisted"
     },
 	{
-        "name": "02-PFC",
+        "name": "08",
         "index": 3,
         "group": "Enlisted"
     },
 	{
-        "name": "03-SPC",
+        "name": "07",
         "index": 4,
         "group": "Enlisted"
     },
 	{
-        "name": "04-LCPL",
+        "name": "06",
         "index": 5,
-        "group": "Enlisted"
+        "group": "JNCO"
     },
 	{
-        "name": "05-CPL",
+        "name": "05",
         "index": 6,
-        "group": "Enlisted"
+        "group": "JNCO"
     },
 	{
-        "name": "06-SGT",
+        "name": "04",
         "index": 7,
-        "group": "NCO"
+        "group": "JNCO"
     },
 	{
-        "name": "07-SSGT",
+        "name": "03",
         "index": 8,
         "group": "NCO"
     },
 	{
-        "name": "08-MSGT",
+        "name": "02",
         "index": 9,
         "group": "NCO"
     },
 	{
-        "name": "09-SGM",
+        "name": "01",
         "index": 10,
         "group": "NCO"
     },
 	{
-        "name": "10-WO",
+        "name": "EpU",
         "index": 11,
-        "group": "NCO"
+        "group": "SNCO"
     },
 	{
-        "name": "11-2ndLT",
+        "name": "SqL",
         "index": 12,
-        "group": "CO"
+        "group": "SNCO"
     },
 	{
-        "name": "12-1stLT",
+        "name": "T-OfC",
         "index": 13,
         "group": "CO"
     },
 	{
-        "name": "13-CPT",
+        "name": "OfC-I",
         "index": 14,
         "group": "CO"
     },
 	{
-        "name": "14-Major",
+        "name": "OfC-II",
         "index": 15,
         "group": "CO"
     },
 	{
-        "name": "15-Colonel",
+        "name": "OfC-III",
         "index": 16,
+        "group": "CO"
+    },
+	{
+        "name": "CmD",
+        "index": 17,
+        "group": "CO"
+    },
+    {
+        "name": "DvL",
+        "index": 18,
         "group": "CO"
     }
 ]}

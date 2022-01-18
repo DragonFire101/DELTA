@@ -17,11 +17,11 @@ async function getMemberInfo(member, sheet, server) {
 
 	const embed = new Discord.MessageEmbed({
 		thumbnail: { url: 'https://i.ibb.co/2MHY6wn/D-E-L-T-A-4.jpg' },
-		color: 15105570,
+		color: 255,
 		title: memberData[server.nameHeader],
 		footer: {
-			text: 'Resistance Logistics',
-			icon_url: 'https://i.ibb.co/Wzd001F/677a08d8682923ca8cb51fe48df38208.png'
+			text: 'Combine Logistics',
+			icon_url: 'https://cdn.discordapp.com/attachments/888902406736314368/932812314120445982/pngwing.com.png'
 		}
 	});
 

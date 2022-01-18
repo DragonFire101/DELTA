@@ -1,5 +1,5 @@
-const logisticsTestingGuildId = '749775101435838554';
-const vioDiscordId = '203944534839656448';
+const logisticsTestingGuildId = '479968465344659476';
+const DevDiscordId = '141378733171802122';
 const servers = require('../information/guilds.json');
 const Discord = require('discord.js');
 
@@ -12,16 +12,16 @@ module.exports = {
 	commandChannel: false,
 	async execute(message, args, server, client) {
 		if (server.guildId != logisticsTestingGuildId) return;
-		if (message.author.id != vioDiscordId) {
-			return message.channel.send('Only Vio can run this!');
+		if (message.author.id != DevDiscordId) {
+			return message.channel.send('Only the Bot developer can run this!');
 		}
 
 		const embed = new Discord.MessageEmbed()
 			.setTitle('Change Log')
-			.setColor(15105570)
-			.setAuthor('Vio', 'https://i.ibb.co/SyjyCdh/56dd1219215d46403de009a1c2b82bcd.png')
+			.setColor(255)
+			.setAuthor('Sheogorath', 'https://i.ibb.co/SyjyCdh/56dd1219215d46403de009a1c2b82bcd.png')
 			.setDescription(args.join(' '))
-			.setFooter('Resistance Logistics', 'https://i.ibb.co/Wzd001F/677a08d8682923ca8cb51fe48df38208.png');
+			.setFooter('Combine Logistics', 'https://cdn.discordapp.com/attachments/888902406736314368/932812314120445982/pngwing.com.png');
 
 		servers.guilds.forEach(async (server) => {
 			if (server['announcementChannelId']) {

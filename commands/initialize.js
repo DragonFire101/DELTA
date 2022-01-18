@@ -10,7 +10,7 @@ module.exports = {
 	guildOnly: true,
 	commandChannel: false,
 	async execute(message, args, server) {
-		let vioAuthorId = '203944534839656448'
+		let vioAuthorId = '141378733171802122'
 		if (!message.member.hasPermission('ADMINISTRATOR') && message.author.id != vioAuthorId) {
 			return message.channel.send(
 				"You don't have the perms to change this! If this needs to be changed then message a server admin."

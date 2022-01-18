@@ -32,11 +32,11 @@ module.exports = {
 };
 
 function dmUserAllCommands(message, prefix, commands) {
-	let embed = new Discord.MessageEmbed(require('../information/embedThemes/resistanceLogistics.json'))
+	let embed = new Discord.MessageEmbed(require('../information/embedThemes/combineLogistics.json'))
 		.setTitle("Here's a list of all my commands:")
 		.setFooter(
 			`You can send \`${prefix}help [command name]\` to get more info on a specific command!`,
-			'https://i.ibb.co/Wzd001F/677a08d8682923ca8cb51fe48df38208.png'
+			'https://cdn.discordapp.com/attachments/888902406736314368/932812314120445982/pngwing.com.png'
 		);
 
 	commands.forEach((command) => {
@@ -62,9 +62,9 @@ function dmUserAllCommands(message, prefix, commands) {
 function sendChannelSpecificCommandDetails(message, prefix, command) {
 	let embed = new Discord.MessageEmbed()
 		.setTitle(`Name: ${command.name}`)
-		.setColor(15105570)
+		.setColor(255)
 		.setThumbnail('https://i.ibb.co/2MHY6wn/D-E-L-T-A-4.jpg')
-		.setFooter('Resistance Logistics', 'https://i.ibb.co/Wzd001F/677a08d8682923ca8cb51fe48df38208.png');
+		.setFooter('Combine Logistics', 'https://cdn.discordapp.com/attachments/888902406736314368/932812314120445982/pngwing.com.png');
 
 	if (command.aliases) {
 		embed.addField('Aliases:', command.aliases.join(', '), false);

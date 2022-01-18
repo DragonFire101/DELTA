@@ -15,7 +15,7 @@ function splitEmbedsByFields(fieldsContent, fieldCount, title) {
 		}
 
 		var embed = new Discord.MessageEmbed({
-			color: 15105570,
+			color: 255,
 			fields: fields
 		});
 
@@ -27,7 +27,7 @@ function splitEmbedsByFields(fieldsContent, fieldCount, title) {
 		}
 
 		if (fieldsContent.length == 0) {
-			embed.setFooter('Resistance Logistics', 'https://i.ibb.co/Wzd001F/677a08d8682923ca8cb51fe48df38208.png');
+			embed.setFooter('Combine Logistics', 'https://cdn.discordapp.com/attachments/888902406736314368/932812314120445982/pngwing.com.png');
 		}
 
 		embeds.push(embed);

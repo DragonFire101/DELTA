@@ -27,9 +27,9 @@ module.exports = {
 		var membersInfo = await getMembersInfo(rosterSheet, server);
 		var embeds = await splitEmbedsByFields(membersInfo, 24, spreadsheet.title);
 		var ranks = await getRankCountFromSheet(server, rosterSheet);
-		let iconUrl = require(`../information/embedThemes/resistanceLogistics.json`).footer.iconURL;
+		let iconUrl = require(`../information/embedThemes/combineLogistics.json`).footer.iconURL;
 		embeds[embeds.length - 1].setFooter(
-			`CO: ${ranks['CO']} | NCO: ${ranks['NCO']} | Enlisted: ${ranks['Enlisted']} | TR: ${ranks['TR']} | Honorary: ${ranks['Honorary']}`,
+			`CO: ${ranks['CO']} | SNCO: ${ranks['SNCO']} | NCO: ${ranks['NCO']} | JNCO: ${ranks['JNCO']} | Enlisted: ${ranks['Enlisted']} | Honorary: ${ranks['Honorary']} | Advisor: ${ranks['Advisor']}`,
 			iconUrl
 		);
 

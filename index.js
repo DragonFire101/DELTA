@@ -18,8 +18,8 @@ client.on('ready', async () => {
 	client.user.setPresence({
 		status: 'online',
 		activity: {
-			name: 'on H.E.C.U #JoinFH',
-			type: 'PLAYING'
+			name: 'to your every desire!',
+			type: 'LISTENING'
 		}
 	})
 
@@ -207,14 +207,14 @@ client.on('guildMemberRemove', async (member) => {
 
 	let embed = new Discord.MessageEmbed()
 		.setTitle('Leave Notification')
-		.setColor(15105570)
+		.setColor(255)
 		.setAuthor(member.user.tag)
 		.setDescription(
 			`User \`${member.displayName} / ${rosterMember[
 				server.nameHeader
 			]}\` has left the discord and is still on the roster!`
 		)
-		.setFooter('Resistance Logistics', 'https://i.ibb.co/Wzd001F/677a08d8682923ca8cb51fe48df38208.png');
+		.setFooter('Combine Logistics', 'https://cdn.discordapp.com/attachments/888902406736314368/932812314120445982/pngwing.com.png');
 
 	announcementChannel.send(embed);
 });

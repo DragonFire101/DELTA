@@ -11,11 +11,11 @@ module.exports = {
 	commandChannel: true,
 	hide: true,
 	async execute(message) {
-		if (message.author.id != '203944534839656448') {
+		if (message.author.id != '141378733171802122') {
 			return message.channel.send(`Unknown command!`);
 		}
 
-		const embed = new Discord.MessageEmbed(require('../information/embedThemes/resistanceLogistics.json')).setTitle(
+		const embed = new Discord.MessageEmbed(require('../information/embedThemes/combineLogistics.json')).setTitle(
 			'Resistance Divisions'
 		);
 
@@ -44,10 +44,12 @@ module.exports = {
 			var rows = await rosterSheet.getRows();
 
 			var ranks = {
+				Advisor: 0,
 				Honorary: 0,
-				TR: 0,
 				Enlisted: 0,
+				JNCO: 0,
 				NCO: 0,
+				SNCO: 0,
 				CO: 0,
 				Other: 0
 			};
@@ -61,10 +63,12 @@ module.exports = {
 			embed.addField(
 				`*${guild.guildName}*`,
 				`**COs:** ${ranks['CO']}
+					**SNCOs:** ${ranks['SNCO']}
 					**NCOs:** ${ranks['NCO']}
+					**JNCOs:** ${ranks['JNCO']}
 					**Enlisted:** ${ranks['Enlisted']}
-					**TR:** ${ranks['TR']}
 					**Honorary:** ${ranks['Honorary']}
+					**Advisors:** ${ranks['Advisor']}
 					**Other:** ${ranks['Other']}`,
 				true
 			);

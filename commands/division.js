@@ -12,7 +12,7 @@ module.exports = {
 	async execute(message, args, server) {
 		let divisionGuild;
 		if (args && args.length > 0) {
-			if (message.author.id != '203944534839656448') {
+			if (message.author.id != '141378733171802122') {
 				return message.channel.send(
 					`You don't have permission to run this on any division except your own!\nUse \`${server.prefix}division\` to get data on your own division!`
 				);
@@ -28,7 +28,7 @@ module.exports = {
 			divisionGuild = server;
 		}
 
-		const embed = new Discord.MessageEmbed(require('../information/embedThemes/resistanceLogistics.json')).setTitle(
+		const embed = new Discord.MessageEmbed(require('../information/embedThemes/combineLogistics.json')).setTitle(
 			`${divisionGuild.guildName}`
 		);
 
@@ -47,10 +47,12 @@ module.exports = {
 		var rows = await rosterSheet.getRows();
 
 		var ranks = {
+			Advisor: 0,
 			Honorary: 0,
-			TR: 0,
 			Enlisted: 0,
+			JNCO: 0,
 			NCO: 0,
+			SNCO: 0,
 			CO: 0,
 			Other: 0
 		};
@@ -63,10 +65,12 @@ module.exports = {
 
 		embed.setDescription(
 			`**COs:** ${ranks['CO']}
+			**SNCOs:** ${ranks['SNCO']}
             **NCOs:** ${ranks['NCO']}
+			**JNCOs:** ${ranks['JNCO']}
             **Enlisted:** ${ranks['Enlisted']}
-            **TR:** ${ranks['TR']}
 			**Honorary:** ${ranks['Honorary']}
+			**Advisors:** ${ranks['Advisor']}
             **Other:** ${ranks['Other']}`
 		);
 
