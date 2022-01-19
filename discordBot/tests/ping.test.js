@@ -8,7 +8,7 @@ const message = {
     }
 }
 
-test('Correct Output', async () => {
+test('Ping output message properly sent', async () => {
     expect(
         await pingCommand.execute(message, [])
     ).toBe('Pong!')

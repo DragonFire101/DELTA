@@ -20,4 +20,5 @@ const characterSchema = new mongoose.Schema({
         default: Date.now()
     }
 }, { strict: false })
+
 module.exports = mongoose.model('Character', characterSchema);
