@@ -1,3 +1,5 @@
+const mongoose = require('mongoose');
+
 module.exports = {
 	name: 'roster',
 	aliases: [ 'members', 'r', 'rstr', 'list', 'ls' ],
@@ -8,6 +10,10 @@ module.exports = {
 	async execute(message, args) {
 		try {
 			let instance = getInstanceByCommandChannelId(message);
+
+			mongoose.connect(process.env.DATABASE_URI + 'DELTA_ROSTERS');
+        	const db = mongoose.connection;
+			let roster = db.collection('rosters').findOne()
 
 			//TODO Iterate through roster from interface and list basic member info
 		}
