@@ -5,6 +5,11 @@ const instanceSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    type: {
+        type: String,
+        required: true,
+        default: 'roster'
+    },
     discord_server_id: {
         type: Number,
         required: true
@@ -36,6 +41,28 @@ const instanceSchema = new mongoose.Schema({
                 type: String,
                 required: false
             }
+        }
+    },
+    announcements: {
+        enabled: {
+            type: Boolean,
+            required: true,
+            default: true
+        },
+        channel_id: {
+            type: Number,
+            required: false
+        }
+    },
+    member_leave_notification: {
+        enabled: {
+            type: Boolean,
+            required: true,
+            default: true
+        },
+        channel_id: {
+            type: Number,
+            required: false
         }
     },
     rank_structure: {

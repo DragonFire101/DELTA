@@ -26,5 +26,5 @@ const logSchema = new mongoose.Schema({
         }
     }
 })
-membe
+
 module.exports = mongoose.model('Log', logSchema);
