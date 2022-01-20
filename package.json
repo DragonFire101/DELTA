@@ -1,7 +1,7 @@
 {
   "name": "delta",
   "version": "2.0.0",
-  "description": "",
+  "description": "A new iteration of DELTA offering standalone storage and better customizability.",
   "main": "index.js",
   "scripts": {
     "start": "node .",
