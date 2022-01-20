@@ -9,12 +9,12 @@ const characterSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    dateJoined: {
+    date_joined: {
         type: Date,
         required: false,
         default: Date.now()
     },
-    lastPromotionDate: {
+    last_promotion_date: {
         type: Date,
         required: false,
         default: Date.now()
