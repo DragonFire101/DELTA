@@ -1,4 +1,7 @@
-const Instance = require('../models/instance.js'); 
+require('dotenv').config();
+
+const mongoose = require('mongoose');
+const Instance = require('../../database/models/instance.js'); 
 
 module.exports = {
 	name: 'instance',
@@ -11,13 +14,15 @@ module.exports = {
 	async execute(message, args) {
         const subcommand = args.shift();
 
+        mongoose.connect(process.env.DATABASE_URI + 'DELTA_CONFIG');
+        const db = mongoose.connection;
+
         switch (subcommand) {
             case 'a': 
             case 'add':
-                //TODO Make roster with instance and tie them together
                 const instance = new Instance({
                     name: args.shift(),
-                    discord_server_id: message.server.id,
+                    discord_server_id: message.guild.id,
                     command_channel_id: message.channel.id,
                 });
 
@@ -33,7 +38,7 @@ module.exports = {
             case 'rm':
             case 'remove':
                 //TODO Remove Instance
-                const instance = getInstanceByName(message, args.shift()).catch(() => {
+                instance = getInstanceByName(message, args.shift()).catch(() => {
                     return message.channel.send('Failed to find this instance! Did you type the name right?');
                 });
 
@@ -43,7 +48,7 @@ module.exports = {
             case 's':
             case 'set': 
                 //Possibly working ???
-                const instance = getInstanceByName(message, args.shift()).catch(() => {
+                instance = getInstanceByName(message, args.shift()).catch(() => {
                     return message.channel.send('Failed to find this instance! Did you type the name right?');
                 });
 
