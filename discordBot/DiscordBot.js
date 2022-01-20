@@ -42,7 +42,7 @@ class DiscordBot {
     async handleCommand(message) {
         let args = message.content.substring(1).split(/ +/);
         var commandName = args.shift().toLowerCase();
-	    var command = await this.getCommandFromName(commandName);
+	    var command = await this.getCommandFromString(commandName);
 
         if (!command) 
             return message.channel.send('This is an invalid command!');
@@ -50,7 +50,7 @@ class DiscordBot {
         command.execute(message, args);
     }
 
-    async getCommandFromName(commandName) {
+    async getCommandFromString(commandName) {
         return (
             this.client.commands.get(commandName) ||
             this.client.commands.find((cmd) => cmd.aliases && cmd.aliases.includes(commandName))
