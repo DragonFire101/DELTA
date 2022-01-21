@@ -1,7 +1,6 @@
 require('dotenv').config();
 
-const mongoose = require('mongoose');
-const Instance = require('../../database/models/instance.js'); 
+const models = require('../../database/models');
 
 module.exports = {
 	name: 'instance',
@@ -14,16 +13,15 @@ module.exports = {
 	async execute(message, args) {
         const subcommand = args.shift();
 
-        mongoose.connect(process.env.DATABASE_URI + 'DELTA_CONFIG');
-        const db = mongoose.connection;
-
         switch (subcommand) {
             case 'a': 
             case 'add':
-                const instance = new Instance({
+                const instance = new models.Instance({
                     name: args.shift(),
-                    discord_server_id: message.guild.id,
-                    command_channel_id: message.channel.id,
+                    'discord.serverId': message.guild.id,
+                    'discord.channelId': message.channel.id,
+                    'announcements.channelId': message.channel.id,
+                    'memberLeaveNotification.channelId': message.channel.id
                 });
 
                 try {
@@ -67,7 +65,7 @@ module.exports = {
 };
 
 async function getInstanceByName(message, instanceName) {
-    const instance = await Instance.find({ name: instanceName, discord_server_id: message.server.id });
+    const instance = await models.Instance.find({ name: instanceName, discord_server_id: message.server.id });
 
     if (!instance) {
         throw new Error('Could not find instance by name.');
