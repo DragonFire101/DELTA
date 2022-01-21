@@ -1,5 +1,8 @@
 require('dotenv').config();
 
+const mongoose = require('mongoose');
+mongoose.connect(process.env.DATABASE_URI);
+
 const { DiscordBot } = require('./discordBot/DiscordBot.js');
 const { Intents } = require('discord.js');
  
