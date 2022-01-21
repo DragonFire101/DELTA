@@ -6,7 +6,6 @@ const mongoose = require('mongoose');
 class ApiServer {
     constructor(port) {
         //Need to figure out where to connect from request.
-        mongoose.connect(process.env.DATABASE_URI);
         const db = mongoose.connection;
 
         db.once('open', () => console.log('[EVENT] Connected to MongoDB database.'));
