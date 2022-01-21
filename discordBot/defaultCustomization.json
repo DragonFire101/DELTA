@@ -1,0 +1,19 @@
+{
+    "prefix": "+",
+    "embedOptions": {
+        "color": 9807270,
+        "thumbnail": {
+            "url": "https://i.ibb.co/2MHY6wn/D-E-L-T-A-4.jpg"
+        },
+        "footer": {
+            "iconURL": "https://definitivenetworksgmod.com/forums/images/logo.png",
+            "text": "Definitive Networks"
+        }
+    },
+    "rankStructure": [
+        {
+            "name": "Member",
+            "index": 0
+        }
+    ]
+}
