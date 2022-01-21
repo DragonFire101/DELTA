@@ -1,31 +1,42 @@
 const mongoose = require('mongoose');
+const ObjectId = mongoose.Schema.Types.ObjectId;
 
-const characterSchema = new mongoose.Schema({
-    discord_name: {
+const SchemaCharacter = new mongoose.Schema({
+    discord: {
+        name: {
+            type: String,
+            required: true,
+            default: null
+        },
+        id: {
+            type: Number,
+            required: true,
+            default: null
+        }
+    },
+    steamId: {
         type: String,
         required: true,
         default: null
     },
-    discord_id: {
-        type: Number,
-        required: true,
-        default: null
-    },
-    steam_id: {
-        type: String,
-        required: true,
-        default: null
-    },
-    date_joined: {
+    dateJoined: {
         type: Date,
         required: true,
         default: Date.now()
     },
-    characters: {
-        type: Array,
-        required: true,
-        default: []
-    }
+    characters: [
+        {
+            type: ObjectId,
+            ref: 'character',
+            required: true
+        }
+    ],
+    characterIds: [
+        {
+            type: String,
+            required: true
+        }
+    ]
 })
 
-module.exports = mongoose.model('Character', characterSchema);
+module.exports = SchemaCharacter;

@@ -1,24 +1,39 @@
 const mongoose = require('mongoose');
+const ObjectId = mongoose.Schema.Types.ObjectId;
 
-const characterSchema = new mongoose.Schema({
+const SchemaCharacter = new mongoose.Schema({
     name: {
         type: String,
         required: true
     },
-    division: {
+    dateJoined: {
+        type: Date,
+        required: false,
+        default: Date.now()
+    },
+    dateLastPromotion: {
+        type: Date,
+        required: false,
+        default: Date.now()
+    },
+    user: {
+        type: ObjectId,
+        ref: 'user',
+        required: true
+    },
+    userId: {
         type: String,
         required: true
     },
-    date_joined: {
-        type: Date,
-        required: false,
-        default: Date.now()
+    instance: {
+        type: ObjectId,
+        ref: 'instance',
+        required: true
     },
-    last_promotion_date: {
-        type: Date,
-        required: false,
-        default: Date.now()
+    instanceId: {
+        type: String,
+        required: true
     }
 }, { strict: false })
 
-module.exports = mongoose.model('Character', characterSchema);
+module.exports = SchemaCharacter;

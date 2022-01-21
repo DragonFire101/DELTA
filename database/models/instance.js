@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
+const ObjectId = mongoose.Schema.Types.ObjectId;
 
-const instanceSchema = new mongoose.Schema({
+const defaultCustomization = require('../../discordBot/defaultCustomization.json');
+
+const SchemaInstance = new mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -10,36 +13,48 @@ const instanceSchema = new mongoose.Schema({
         required: true,
         default: 'roster'
     },
-    discord_server_id: {
-        type: Number,
-        required: true
+    discord: {
+        serverId: {
+            type: Number,
+            required: true
+        },
+        channelId: {
+            type: Number,
+            required: true
+        },
     },
-    command_channel_id: {
-        type: Number,
-        required: true
-    },
-    command_prefix: {
+    prefixCommand: {
         type: String,
         required: true,
-        default: '+'
+        default: defaultCustomization.prefix
     },
-    member_prefix: {
+    prefixMember: {
         type: String,
         required: false
     },
-    embed_options: {
+    embedOptions: {
         color: {
             type: Number,
-            required: false
+            required: false,
+            default: defaultCustomization.embedOptions.color
+        },
+        thumbnail: {
+            url: {
+                type: String,
+                required: false,
+                default: defaultCustomization.embedOptions.thumbnail.url
+            }
         },
         footer: {
             iconURL: {
                 type: String,
-                required: false
+                required: false,
+                default: defaultCustomization.embedOptions.footer.iconURL
             },
             text: {
                 type: String,
-                required: false
+                required: false,
+                default: defaultCustomization.embedOptions.footer.text
             }
         }
     },
@@ -49,36 +64,44 @@ const instanceSchema = new mongoose.Schema({
             required: true,
             default: true
         },
-        channel_id: {
+        channelId: {
             type: Number,
             required: false
         }
     },
-    member_leave_notification: {
+    memberLeaveNotification: {
         enabled: {
             type: Boolean,
             required: true,
             default: true
         },
-        channel_id: {
+        channelId: {
             type: Number,
             required: false
         }
     },
-    rank_structure: {
+    rankStructure: {
         type: Array,
         required: true,
-        default: [
-            {
-                name: 'Member',
-                index: 0
-            }
-        ]
+        default: defaultCustomization.rankStructure
     },
-    authorized_users: {
+    authorizedUsers: {
         type: Array,
         required: false
-    }
+    },
+    characters: [
+        {
+            type: ObjectId,
+            ref: 'character',
+            required: true
+        }
+    ],
+    characterIds: [
+        {
+            type: String,
+            required: true
+        }
+    ]
 })
 
-module.exports = mongoose.model('Instance', instanceSchema);
+module.exports = SchemaInstance;
