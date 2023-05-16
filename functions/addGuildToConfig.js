@@ -1,5 +1,5 @@
 const fs = require('fs');
-const path = require('path');
+const path = require('node:path');
 const servers = require('../information/guilds.json');
 
 function addGuildToConfig(guild) {

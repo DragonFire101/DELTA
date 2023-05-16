@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('node:path');
 const fs = require('fs');
 const { getColumnInfo } = require('../functions/getColumnInfo.js');
 const { splitEmbedsByFields } = require('../functions/splitEmbedsByFields.js');
