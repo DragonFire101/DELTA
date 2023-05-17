@@ -4,7 +4,6 @@ const { getMemberFromSheetByName } = require('../functions/getMemberFromSheetByN
 const { loadSpreadsheet } = require('../functions/loadSpreadsheet.js');
 const { sendErrorEmbed } = require('../functions/sendErrorEmbed.js');
 const { getReactionConfirmation } = require('../functions/getReactionConfirmation.js');
-const dateFormat = require('dateformat');
 
 module.exports = {
 	name: 'demote',
@@ -65,7 +64,7 @@ module.exports = {
 		]} -> ${server.memberLogPrefix} ${newRank.split('-').pop()} ${memberData[server.nameHeader]}\``, message);
 		if (!(await isConfirmed)) return;
 
-		let today = dateFormat(new Date(), 'mm/dd/yy', true);
+		let today = new Date().toDateString();
 
 		memberData[server.rankHeader] = newRank;
 		memberData[server.lastPromotionDateHeader] = today;

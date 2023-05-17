@@ -10,7 +10,6 @@
   "author": "Vio",
   "license": "ISC",
   "dependencies": {
-    "dateformat": "^4.4.1",
     "delta-google-spreadsheet": "^3.1.16",
     "discord.js": "^12.5.1",
     "dotenv": "^16.0.3",

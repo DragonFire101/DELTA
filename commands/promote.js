@@ -4,7 +4,6 @@ const { getMemberFromSheetByName } = require('../functions/getMemberFromSheetByN
 const { loadSpreadsheet } = require('../functions/loadSpreadsheet.js');
 const { sendErrorEmbed } = require('../functions/sendErrorEmbed.js');
 const { getReactionConfirmation } = require('../functions/getReactionConfirmation.js');
-const dateFormat = require('dateformat');
 
 module.exports = {
 	name: 'promote',
@@ -59,7 +58,7 @@ module.exports = {
 		]} -> ${server.memberLogPrefix} ${newRank.split('-').pop()} ${memberData[server.nameHeader]}\`\n\`Last Promotion: ${lastPromoDate}\``, message);
 		if (!(await isConfirmed)) return;
 
-		let today = dateFormat(new Date(), 'mm/dd/yy', true);
+		let today = new Date().toDateString();
 		let promoWarning = false;
 
 		if (Date.parse(today) - Date.parse(lastPromoDate) < 86400000 * 7) {
