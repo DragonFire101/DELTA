@@ -17,7 +17,7 @@ function addGuildToConfig(guild) {
 		statusHeader: 'Status',
 		discordHeader: 'Discord',
 		rankStructure: 'standard',
-		memberLogPrefix: 'Resistance',
+		memberLogPrefix: 'Combine',
 		staticMessages: [],
 		googleClientCredentials: {}
 	});

@@ -16,7 +16,7 @@ module.exports = {
 		}
 
 		const embed = new Discord.MessageEmbed(require('../information/embedThemes/combineLogistics.json')).setTitle(
-			'Resistance Divisions'
+			'Combine Divisions'
 		);
 
 		const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
