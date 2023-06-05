@@ -51,6 +51,7 @@ module.exports = {
 				NCO: 0,
 				SNCO: 0,
 				CO: 0,
+				Overlook: 0,
 				Other: 0
 			};
 
@@ -62,7 +63,8 @@ module.exports = {
 
 			embed.addField(
 				`*${guild.guildName}*`,
-				`**COs:** ${ranks['CO']}
+					`**Overlook:** ${ranks['Overlook']}
+					**COs:** ${ranks['CO']}
 					**SNCOs:** ${ranks['SNCO']}
 					**NCOs:** ${ranks['NCO']}
 					**JNCOs:** ${ranks['JNCO']}
