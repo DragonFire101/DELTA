@@ -64,10 +64,11 @@ module.exports = {
 		]} -> ${server.memberLogPrefix} ${newRank.split('-').pop()} ${memberData[server.nameHeader]}\``, message);
 		if (!(await isConfirmed)) return;
 
-		let today = new Date().toDateString();
-
+		let today = new Date();
+		let StrToday = today.getUTCMonth()+"/"+today.getUTCDate()+"/"+today.getUTCFullYear().slice(2,4);
+		
 		memberData[server.rankHeader] = newRank;
-		memberData[server.lastPromotionDateHeader] = today;
+		memberData[server.lastPromotionDateHeader] = StrToday;
 
 		try {
 			const rows = await rosterSheet.getRows();

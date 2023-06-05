@@ -58,16 +58,17 @@ module.exports = {
 		]} -> ${server.memberLogPrefix} ${newRank.split('-').pop()} ${memberData[server.nameHeader]}\`\n\`Last Promotion: ${lastPromoDate}\``, message);
 		if (!(await isConfirmed)) return;
 
-		let today = new Date().toDateString();
+		let today = new Date();
+		let StrToday = today.getUTCMonth()+"/"+today.getUTCDate()+"/"+today.getUTCFullYear().slice(2,4);
 		let promoWarning = false;
 
-		if (Date.parse(today) - Date.parse(lastPromoDate) < 86400000 * 7) {
+		if (Date.parse(StrToday) - Date.parse(lastPromoDate) < 86400000 * 7) {
 			promoWarning = true;
 		}
 
 		memberData[server.statusHeader] = 'ACTIVE';
 		memberData[server.rankHeader] = newRank;
-		memberData[server.lastPromotionDateHeader] = today;
+		memberData[server.lastPromotionDateHeader] = StrToday;
 
 		let output;
 		try {
