@@ -9,7 +9,7 @@ const { StaticMessage } = require('./util/StaticMessage.js');
 const servers = require('./information/guilds.json');
 const fs = require('fs');
 const Discord = require('discord.js');
-const client = new Discord.Client();
+const client = new Discord.Client({ws: {intents: 46595}});
 
 client.login(process.env.DISCORD_TOKEN).catch(console.log('[ERROR] Failed to login.'));
 
