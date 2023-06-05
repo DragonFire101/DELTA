@@ -65,7 +65,7 @@ module.exports = {
 		if (!(await isConfirmed)) return;
 
 		let today = new Date();
-		let StrToday = today.getUTCMonth()+"/"+today.getUTCDate()+"/"+today.getUTCFullYear().slice(2,4);
+		let StrToday = today.getUTCMonth()+"/"+today.getUTCDate()+"/"+today.getUTCFullYear().toString().slice(2,4);
 		
 		memberData[server.rankHeader] = newRank;
 		memberData[server.lastPromotionDateHeader] = StrToday;
