@@ -59,7 +59,7 @@ module.exports = {
 		if (!(await isConfirmed)) return;
 
 		let today = new Date();
-		let StrToday = today.getUTCMonth().toString().padStart(2,"0")+"/"+today.getUTCDate().toString().padStart(2,"0")+"/"+today.getUTCFullYear().toString().slice(2,4);
+		let StrToday = (today.getUTCMonth()+1).toString().padStart(2,"0")+"/"+today.getUTCDate().toString().padStart(2,"0")+"/"+today.getUTCFullYear().toString().slice(2,4);
 		let promoWarning = false;
 
 		if (Date.parse(StrToday) - Date.parse(lastPromoDate) < 86400000 * 7) {
